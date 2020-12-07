@@ -57,3 +57,39 @@ int insertValueCArray(CArray *array, int position, int value){
     
 }
 
+int removeValueCArray(CArray *array, int position)
+{
+    if(position >=0 && position < array->size){
+        if(array ->array[position] != 0)
+        {
+            array ->array[position] = 0;
+        }
+        else
+        {
+            return POSITION_EMPTY;
+        }
+        
+    }
+    return INVALID_POSITION;
+}
+
+int pushValueCArray(CArray *array, int value)
+{
+    int i;
+    int ok = 0;
+    for ( i = 0; i < array->size; i++)
+    {
+        if(array->array[i] == 0)
+        {
+            array->array[i] = value;
+            ok = 1;
+            break;
+        }
+    }
+    if (ok == 1)
+        return SUCCESS;
+    else
+        return ARRAY_FULL;
+    
+}
+

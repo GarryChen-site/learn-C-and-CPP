@@ -33,7 +33,7 @@ CArray *getCopyCArray(CArray *array);
 
 // input / output
 int insertValueCArray(CArray *array, int position, int value);
-int removwValueCArray(CArray *array, int position);
+int removeValueCArray(CArray *array, int position);
 int pushValueCArray(CArray *array, int value);
 int updateValueCArray(CArray *array, int position, int value);
 
