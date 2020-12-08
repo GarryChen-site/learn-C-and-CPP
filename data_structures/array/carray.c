@@ -93,3 +93,16 @@ int pushValueCArray(CArray *array, int value)
     
 }
 
+int updateValueVArray(CArray *array, int position, int value){
+    if (position >= 0 && position < array->size)
+    {
+        if(array->array[position] != 0)
+        {}
+        else
+        {
+            return POSITION_NOT_INIT;
+        }
+    }
+    return INVALID_POSITION;
+}
+
