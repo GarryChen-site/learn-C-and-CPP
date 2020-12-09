@@ -93,7 +93,7 @@ int pushValueCArray(CArray *array, int value)
     
 }
 
-int updateValueVArray(CArray *array, int position, int value){
+int updateValueCArray(CArray *array, int position, int value){
     if (position >= 0 && position < array->size)
     {
         if(array->array[position] != 0)
@@ -104,5 +104,14 @@ int updateValueVArray(CArray *array, int position, int value){
         }
     }
     return INVALID_POSITION;
+}
+
+int eraseCArray(CArray *array){
+    int i;
+    for(i = 0, i < array->size; i++)
+    {
+        array->array[i] = 0;
+    }
+    return 0;
 }
 

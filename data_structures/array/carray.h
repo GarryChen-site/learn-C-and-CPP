@@ -38,7 +38,7 @@ int pushValueCArray(CArray *array, int value);
 int updateValueCArray(CArray *array, int position, int value);
 
 // earse
-int earseCArray(CArray *array);
+int eraseCArray(CArray *array);
 
 // switch 换位
 int switchValuesCArray(CArray *array, int position1, int position2);
