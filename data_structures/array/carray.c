@@ -108,10 +108,23 @@ int updateValueCArray(CArray *array, int position, int value){
 
 int eraseCArray(CArray *array){
     int i;
-    for(i = 0, i < array->size; i++)
+    for(i = 0; i < array->size; i++)
     {
         array->array[i] = 0;
     }
     return 0;
 }
+
+int switchValuesCArray(CArray *array, int position1, int position2){
+
+    if(position1 >= 0 && position1 < array->size
+            && position2 >= 0 && position2 < array->size)
+    {
+        int temp = array->array[position1];
+        array->array[position1] = array->array[position2];
+        array->array[position2] = temp;
+    }
+    return INVALID_POSITION;
+}
+
 
