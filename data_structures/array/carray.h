@@ -42,7 +42,7 @@ int eraseCArray(CArray *array);
 
 // switch 换位
 int switchValuesCArray(CArray *array, int position1, int position2);
-int reverseCArrary(CArray *array);
+int reverseCArray(CArray *array);
 
 // sort
 int bubbleSortCArray(CArray *array);

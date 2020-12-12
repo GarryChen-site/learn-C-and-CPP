@@ -127,4 +127,20 @@ int switchValuesCArray(CArray *array, int position1, int position2){
     return INVALID_POSITION;
 }
 
+int reverseCArray(CArray *array){
+    int i;
+    for(int i=0; i< array->size / 2; i++)
+    {
+        swap(array, i, array->size -i -1);
+    }
+    return SUCCESS;
+}
+
+
+
+void swap(CArray *array, int position1, int position2){
+    int temp = array->array[position1];
+    array->array[position1] = array->array[position2];
+    array->array[position2] = temp;
+}
 
