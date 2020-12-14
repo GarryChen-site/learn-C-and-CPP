@@ -136,6 +136,16 @@ int reverseCArray(CArray *array){
     return SUCCESS;
 }
 
+int displayCArray(CArray *array){
+    int i;
+    printf("\nC ARRAY\n");
+    for(i = 0; i< array->size; i++){
+        printf("%d", array->array[i]);
+    }
+    printf("\n");
+    return 0;
+}
+
 
 
 void swap(CArray *array, int position1, int position2){
