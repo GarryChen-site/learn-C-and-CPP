@@ -146,6 +146,18 @@ int displayCArray(CArray *array){
     return 0;
 }
 
+int blenderCArray(CArray *array){
+
+    srand(time(NULL) * array->size);
+    int i;
+    int total = array->size * 100;
+    for(i = 0; i < total; i++)
+    {
+        swap(array, rand() % array->size, rand() % array->size);
+    }
+    return 0;
+}
+
 
 
 void swap(CArray *array, int position1, int position2){
