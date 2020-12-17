@@ -179,3 +179,19 @@ void swap(CArray *array, int position1, int position2){
     array->array[position2] = temp;
 }
 
+int bubbleSortCArray(CArray *array){
+
+    int i,j;
+    for(i=0; i< array->size - 1; i++)
+    {
+        for(j = 0; j < array->size -1 -i; j++)
+        {
+            if (array->array[j] > array->array[j + 1])
+            {
+                swap(array,j, j + 1);
+            }
+        }
+    }
+    return 0;
+}
+
