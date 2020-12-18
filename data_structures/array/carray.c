@@ -195,3 +195,20 @@ int bubbleSortCArray(CArray *array){
     return 0;
 }
 
+int selectionSortCArray(CArray *array){
+
+    int i,j,num;
+    for(i = 1; i < array->size; i++){
+        num = array->array[i];
+        j = i - 1;
+        while (j >=0 && array->array[j] > num)
+        {
+            array->array[j + 1] = array->array[j];
+            j--;
+        }
+        array->array[j + 1] = num;
+        
+    }
+    return 0;
+}
+
