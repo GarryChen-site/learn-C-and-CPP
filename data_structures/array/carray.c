@@ -197,6 +197,22 @@ int bubbleSortCArray(CArray *array){
 
 int selectionSortCArray(CArray *array){
 
+   int i,j,min;
+   for(i = 0; i<array->size - 1; i++){
+       min=i;
+       for (j  = i + 1; j < array->size; j++)
+       {
+           if(array->array[j] < array->array[min]){
+               min = j;
+           }
+       }
+       swap(array, min, i);
+   } 
+   return 0;
+}
+
+int insertionSortCArray(CArray *array){
+
     int i,j,num;
     for(i = 1; i < array->size; i++){
         num = array->array[i];
