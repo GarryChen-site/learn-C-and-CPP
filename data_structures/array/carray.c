@@ -198,7 +198,7 @@ int bubbleSortCArray(CArray *array){
 int selectionSortCArray(CArray *array){
 
    int i,j,min;
-   for(i = 0; i<array->size - 1; i++){
+   for(i = 0; i < array->size - 1; i++){
        min=i;
        for (j  = i + 1; j < array->size; j++)
        {
@@ -226,5 +226,16 @@ int insertionSortCArray(CArray *array){
         
     }
     return 0;
+}
+
+int valueOcurranceCArray(CArray *array, int value){
+    int i, total = 0;
+    for(i = 0; i< array->size; i++)
+    {
+        if(array->array[i] == value){
+            total ++;
+        }
+    }
+    return total;
 }
 
