@@ -239,3 +239,20 @@ int valueOcurranceCArray(CArray *array, int value){
     return total;
 }
 
+CArray *valuePositionsCArray(CArray *array, int value){
+    int i,j = 0;
+    int total = valueOcurranceCArray(array,value);
+    CArray *resultArray =  getCArray(total);
+    for(i = 0; i <  array->size; i++)
+    {
+        if (array->array[i] == value)
+        {
+            resultArray->array[j] = i;
+            j++;
+        }
+        
+    }
+    
+    return resultArray;
+}
+
