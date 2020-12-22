@@ -256,3 +256,30 @@ CArray *valuePositionsCArray(CArray *array, int value){
     return resultArray;
 }
 
+int findMinCArray(CArray *array)
+{
+    int i;
+    int min = array->array[0];
+    for(i = 1; i < array->size; i++)
+    {
+        if(array->array[i] < min)
+        {
+            min = array->array[i];
+        }
+    }
+    return min;
+}
+
+int findMaxCArray(CArray *array)
+{
+    int i;
+    int max = array->array[0];
+    for(i = 1; i < array->size; i++)
+    {
+        if(array->array[i] > max)
+        {
+            max = array->array[i];
+        }
+    }
+    return max;
+}
