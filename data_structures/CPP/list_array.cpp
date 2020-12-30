@@ -27,6 +27,19 @@ struct list {
          std::cerr << __func__ << ":" << __LINE__ << ": Undefined condition\n";
          return -1;
     }
+
+    int LinerSearch(const std::array<int,50>& dataArr, int x) const
+    {
+        for(int i = 0; i < top; i++)
+        {
+            if(dataArr[i] == x)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
     
 
     int Search(int x)
@@ -36,4 +49,4 @@ struct list {
         return pos;
     }
 
-}
+};
