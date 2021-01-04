@@ -6,6 +6,7 @@ struct list {
 
     std::array<int,50> data{};
     int top = 0;
+    bool isSorted = false;
     
     int BinarySearch(const std::array<int,50>& dataArr, int first, int last,int x)
     {
@@ -45,8 +46,29 @@ struct list {
     int Search(int x)
     {
         int pos = 0;
+        if(isSorted)
+        {
+            pos = BinarySearch(data,0,top - 1, x);
 
+        }else
+        {
+            pos = LinerSearch(data,x);
+        }
+        
+        if(pos != -1)
+        {
+            std::cout << "\nElement found at position : " << pos;
+        } else
+        {
+            std::cout << "\nElement not found";
+        }
+        
         return pos;
+    }
+
+    void Sort()
+    {
+        
     }
 
 };
