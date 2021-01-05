@@ -68,7 +68,24 @@ struct list {
 
     void Sort()
     {
-        
+        int i=0,j=0,pos=0;
+        for(i=0; i < top; i++)
+        {
+            int min = data[i];
+            for(j = i+1; j < top; j++)
+            {
+                if(data[j] < min)
+                {
+                    pos = j;
+                    min = data[pos];
+                }
+            }
+
+            int temp = data[i];
+            data[i] = data[pos];
+            data[pos] = temp;
+        }
+        isSorted = true;
     }
 
 };
