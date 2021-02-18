@@ -1,0 +1,10 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/garrychen/Documents/c and cpp/learn-C-and-CPP/data_structures/C"
+CMake Error at CMakeLists.txt:12 (add_executable):
+  The target name "data_structures/C" is reserved or not valid for certain
+  CMake features, such as generator expressions, and may result in undefined
+  behavior.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/garrychen/Documents/c and cpp/learn-C-and-CPP/data_structures/C/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/garrychen/Documents/c and cpp/learn-C-and-CPP/data_structures/C/cmake-build-debug/CMakeFiles/CMakeError.log".
