@@ -25,4 +25,25 @@ typedef struct Dict
     int number_of_elements;
 }Dictionary;
 
+/*
+ * create_dict: is a simple constructor for creating
+ *              a dictionary and setting up the
+ *              member field 'number_of_elements'
+ *              and prepares the inner array 'elements'
+ */
+Dictionary *create_dict(void );
+
+/*
+ * add_item_label: adds item (void*) to the dictionary at given label
+ * return 0 if adding was successful otherwise -1
+ */
+int add_item_label(Dictionary *, char label[], void *);
+
+/*
+ * add_item_index: adds item (void*) to the dictionary at given index (int)
+ * return 0 if adding was successful otherwise -1
+ */
+int add_item_index(Dictionary *, int index, void *);
+
+
 #endif //ALGORITHMS_IN_C_DICT_H
