@@ -47,6 +47,7 @@ int add_item_index(Dictionary *, int index, void *);
 
 /*
  * get_element: returns the element at given label
+ * char [] is a string
  */
 void *get_element_label(Dictionary *, char []);
 
@@ -58,7 +59,7 @@ void *get_element_index(Dictionary *, int);
 /*
  * simple destructor function
  */
-void destory(Dictionary *);
+void destroy(Dictionary *);
 
 
 #endif //ALGORITHMS_IN_C_DICT_H

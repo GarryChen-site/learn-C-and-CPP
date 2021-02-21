@@ -9,4 +9,4 @@ set(CMAKE_C_STANDARD_REQUIRED YES)
 
 file(GLOB SOURCES)
 
-add_executable(data_structures/C ${SOURCE_FILES} ${SOURCES} dicitionary/dict.h)
+add_executable(data_structures/C ${SOURCE_FILES} ${SOURCES} dicitionary/dict.h dicitionary/dict.c)
