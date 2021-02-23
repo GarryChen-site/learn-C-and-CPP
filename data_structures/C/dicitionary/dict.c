@@ -37,7 +37,7 @@ int get_hash(char s[])
     // iterates over string at each character
     for(int counter = 0; s[counter] != '\0'; counter++)
     {
-        // actual computing of the hash code
+        // actual computing of the hash code TODO ???
         hash_code =
                 s[counter] + (hash_code << 6) + (hash_code << 16) - hash_code;
     }
@@ -45,3 +45,58 @@ int get_hash(char s[])
     return hash_code % MAXELEMENTS;
 }
 
+int add_item_label(Dictionary *dic, char label[], void *item)
+{
+    unsigned int index = get_hash(label);
+
+    // make sure index is fitting
+    if(index < MAXELEMENTS)
+    {
+        dic->elements[index] = item;
+        return 0;
+    }
+
+    // error case
+    return -1;
+}
+
+int add_item_index(Dictionary *dic, int index, void *item)
+{
+    // make sure whether this place is already given
+    if(!dic->elements[index])
+    {
+        dic->elements[index] = item;
+        return 0;
+    }
+
+    // error case
+    return -1;
+}
+
+void *get_element_label(Dictionary *dict, char s[])
+{
+    int index = get_hash(s);
+    if(dict->elements[index])
+    {
+        return dict->elements[index];
+    }
+
+    printf("None entry at given label\n");
+    return NULL;
+}
+
+void *get_element_index(Dictionary *dict, int index)
+{
+    if(index >=0 && index < MAXELEMENTS)
+    {
+        return dict->elements[index];
+    }
+
+    printf("index out of bounds!\n");
+    return NULL;
+}
+
+void destroy(Dictionary *dict)
+{
+    free(dict);
+}
