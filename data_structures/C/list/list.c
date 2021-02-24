@@ -61,6 +61,10 @@ void **List_toArray(L list)
 // Create and return a list
 L List_list(L list, void *val,...)
 {
+    va_list ap;
+    L *p = &list;
+
+    va_start
 
 }
 
