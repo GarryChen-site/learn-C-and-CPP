@@ -59,6 +59,7 @@ void **List_toArray(L list)
 }
 
 // Create and return a list
+// todo to be continue
 L List_list(L list, void *val,...)
 {
     va_list ap;
