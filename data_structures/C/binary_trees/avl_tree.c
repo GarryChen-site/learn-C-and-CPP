@@ -77,6 +77,7 @@ void printAVL(avlNode *node, int level)
     }
 }
 
+// insert 1 2 3
 avlNode *leftRotate(avlNode *z)
 {
     avlNode *y = z->right;
@@ -90,8 +91,8 @@ avlNode *leftRotate(avlNode *z)
 
     return y;
 }
-// 考虑相对位置
-// insert 3 2 1
+
+// insert 3 2 1 ringtRotate (2) 返回的值是啥
 avlNode *rightRotate(avlNode *z)
 {
     avlNode *y = z->left;
@@ -106,8 +107,12 @@ avlNode *rightRotate(avlNode *z)
     return y;
 }
 
-//insert 3 1 2
+//insert 3 1 2 
 avlNode *LeftRightRotate(avlNode *z)
 {
+    // 为右转做准备,因为2是底端，应该是中间的点来左旋，所以是leftRotate(z->left)
+    // 为什么赋值给z->left
+    z->left = leftRotate(z->left);
 
+    return (rightRotate(z));
 }
