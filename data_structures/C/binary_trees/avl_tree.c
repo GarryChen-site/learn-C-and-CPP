@@ -111,8 +111,45 @@ avlNode *rightRotate(avlNode *z)
 avlNode *LeftRightRotate(avlNode *z)
 {
     // 为右转做准备,因为2是底端，应该是中间的点来左旋，所以是leftRotate(z->left)
-    // 为什么赋值给z->left
+    // 为什么赋值给z->left 只是赋值给本来应该在中间的位置
     z->left = leftRotate(z->left);
-
+    // z 转到中间后
     return (rightRotate(z));
+}
+
+avlNode *RightLeftRoate(avlNode *z)
+{
+    z->right = rightRotate(z->right);
+
+    return (leftRotate(z));
+}
+
+avlNode *insert(avlNode *node, int key)
+{
+    if(node == NULL)
+    {
+        return (newNode(key));
+    }
+
+    // Binary Search Tree insertion
+    if(key < node->left)
+    {
+        node -> left = insert(node->left, key);
+    }
+    else if(key > node->right)
+    {
+        node ->right = insert(node->right, key);
+    }
+
+    // node height as per the AVL formula
+    node->height = (max(nodeHeight(node->left), nodeHeight(node->right)) + 1);
+
+    // checking for the balance condiion
+    int balance = heightDiff(node);
+
+    // left left
+    
+    // right right
+    
+    return node;
 }
