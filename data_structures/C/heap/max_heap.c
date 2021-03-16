@@ -52,3 +52,29 @@ int main()
     printf("\n");
     return 0;
 }
+
+Heap *create_heap(Heap *heap)
+{
+    heap = (Heap *)malloc(sizeof(Heap));
+    heap->size = 1;
+    // p是啥？？？
+    heap->p = (int *)malloc(heap->size * sizeof(int));
+    heap->count = 0;
+    return heap;
+}
+
+int seize(Heap *heap)
+{
+    return heap->count;
+}
+
+int empty(Heap *heap)
+{
+    if(heap->count !=0)
+    {
+        return 0;
+    }else
+    {
+        return 1;
+    }
+}
