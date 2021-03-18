@@ -77,7 +77,7 @@ void printAVL(avlNode *node, int level)
     }
 }
 
-// insert 1 2 3
+// insert 1 2 3 *z is root of subtree to be rotated left .Here is 3. Return new root of rebalanced subtree
 avlNode *leftRotate(avlNode *z)
 {
     avlNode *y = z->right;
