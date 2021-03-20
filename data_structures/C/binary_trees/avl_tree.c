@@ -42,7 +42,7 @@ int nodeHeight(avlNode *node)
     else
         return (node->height);
 }
-
+// left - right
 int heightDiff(avlNode *node)
 {
     if (node == NULL)
@@ -147,9 +147,116 @@ avlNode *insert(avlNode *node, int key)
     // checking for the balance condiion
     int balance = heightDiff(node);
 
-    // left left
+    // left left >1 left heavy  think shape
+    if(balance > 1 && key < (node->left->key))
+    {
+        return rightRotate(node);
+    }
     
     // right right
+    if(balance < -1 && key > (node->right->key))
+    {
+        return leftRotate(node);
+    }
+
+    // left right
+    if(balance > 1 && key > (node->left->key))
+    {
+        node = LeftRightRotate(node);
+    }
+
+    // right left
+    if(balance < -1 && key <(node->right->key))
+    {
+        node = RightLeftRoate(node);
+    }
     
     return node;
 }
+
+
+avlNode *delete(avlNode *node, int queryNum)
+{
+    if(node == NULL)
+    {
+        return node;
+    }
+
+    if(queryNum < node->key)
+    {
+        node->left = 
+        delete(node->left, queryNum);
+    }
+    else if(queryNum > node->key)
+    {
+        node->right = 
+        delete(node->right,queryNum);
+    }
+    else
+    {
+        //todo null,single, two child
+    }
+
+    if(node == NULL)
+    {
+        return node;
+    }
+
+    // update height
+    node->height = (max(nodeHeight(node->left),nodeHeight(node->right)) + 1);
+
+    int balance = heightDiff(node);
+
+    
+}
+
+avlNode *findNode(avlNode *node, int queryNum)
+{
+    if(node != NULL)
+    {
+        if(queryNum < node->key)
+        {
+            node = findNode(node->left, queryNum);
+        }
+        else if (queryNum > node->key)
+        {
+            node = findNode(node->right, queryNum);
+        }
+    }
+    return node;
+}
+
+
+void printPreOrder(avlNode *node)
+{
+    if(node == NULL)
+    {
+        return;
+    }
+    printf("  %d  ", (node->key));
+    printPreOrder(node->left);
+    printPreOrder(node->right);
+}
+
+void printInOrder(avlNode *node)
+{
+    if(node == NULL)
+    {
+        return;
+    }
+    printInOrder(node->left);
+    printf("  %d  ", (node->key));
+    printInOrder(node->right);
+}
+
+void printPostOrder(avlNode *node)
+{
+    if(node == NULL)
+    {
+        return;
+    }
+    printPostOrder(node->left);
+    printPostOrder(node->right);
+    printf("  %d  ", (node->key));
+}
+
