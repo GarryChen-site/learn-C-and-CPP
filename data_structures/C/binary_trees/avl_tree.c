@@ -124,6 +124,7 @@ avlNode *RightLeftRoate(avlNode *z)
     return (leftRotate(z));
 }
 
+// a rotation always balances the tree
 avlNode *insert(avlNode *node, int key)
 {
     if(node == NULL)
@@ -140,7 +141,7 @@ avlNode *insert(avlNode *node, int key)
     {
         node ->right = insert(node->right, key);
     }
-
+    // retracing
     // node height as per the AVL formula
     node->height = (max(nodeHeight(node->left), nodeHeight(node->right)) + 1);
 
@@ -174,7 +175,8 @@ avlNode *insert(avlNode *node, int key)
     return node;
 }
 
-
+// after the appropriate single or double rotation the height of the rebalanced subtree decreases by one 
+// meaning that the tree has to be rebalanced again on the next higher level
 avlNode *delete(avlNode *node, int queryNum)
 {
     if(node == NULL)
