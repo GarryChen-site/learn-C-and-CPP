@@ -187,16 +187,42 @@ avlNode *delete(avlNode *node, int queryNum)
     if(queryNum < node->key)
     {
         node->left = 
-        delete(node->left, queryNum);
+            delete(node->left, queryNum);
     }
     else if(queryNum > node->key)
     {
         node->right = 
-        delete(node->right,queryNum);
+            delete(node->right,queryNum);
     }
     else
     {
-        //todo null,single, two child
+        // Single or No Child
+        if((node->left == NULL) || (node->right == NULL))
+        {
+            avlNode *temp = node->left ? node->left : node->right;
+
+            // No Child
+            if(temp == NULL)
+            {
+                temp = node;
+                node = NULL;
+            }
+            else
+            {
+                *node = *temp;
+            }
+            free(temp);
+        }
+        else
+        {
+            // Two Child
+
+            // like bst delete
+            // but something different
+            avlNode *temp = minNode(node->right);
+            node->key = temp->key;
+            node->right = delete(node->right, temp->key);
+        }
     }
 
     if(node == NULL)
@@ -209,6 +235,29 @@ avlNode *delete(avlNode *node, int queryNum)
 
     int balance = heightDiff(node);
 
+    // 开始旋转
+    
+    /*Left Left */
+    if ((balance > 1) && (heightDiff(node->left) >= 0))
+        return rightRotate(node);
+
+    /*Left Right */
+    if ((balance > 1) && (heightDiff(node->left) < 0))
+    {
+        node = LeftRightRotate(node);
+    }
+
+    /*Right Right */
+    if ((balance < -1) && (heightDiff(node->right) >= 0))
+        return leftRotate(node);
+
+    /*Right Left */
+    if ((balance < -1) && (heightDiff(node->right) < 0))
+    {
+        node = RightLeftRotate(node);
+    }
+
+    return node;
     
 }
 

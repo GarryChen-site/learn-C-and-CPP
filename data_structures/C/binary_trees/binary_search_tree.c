@@ -123,6 +123,7 @@ void inOrder(node *root)
 }
 /**
  * 返回值是调整后的root
+ * root刚开始的值为真root，随着递归的进行，会变成每个节点
  */
 node *delete(node *root, int data)
 {
@@ -173,6 +174,7 @@ node *delete(node *root, int data)
             node *tmp = getMax(root->left);
 
             // sets the data of this node equal to the data of the biggest node
+            // 简而言之，找到左边最大的值(temp),然后替换root的值,继续递归，删除temp,这只会匹配到有1个或者没有字节点的情况
             root->data = tmp->data;
             root->left = delete(root->left, tmp->data);
         }
