@@ -111,3 +111,86 @@ List *insert(List *list, double value, int pos)
         return list;
     }
 }
+
+/**
+ * Deletion by position into the list function
+ */
+List *delete(List *list, int pos)
+{
+    // list NULL case
+    if(list == NULL)
+    {
+        return list;
+    }
+
+    // position existing case
+    if(pos > 0)
+    {
+        List *cpy = list, *tmp = cpy;
+        int flag = 1, index = 1, size = 0;
+
+        while(tmp != NULL)
+        {
+            size++;
+            tmp = tmp->next;
+        }
+
+        // first position case
+        if(pos == 1)
+        {
+            if(size == 1)
+            {
+                return NULL;
+            }
+
+            cpy = cpy->next;
+            cpy->prev = NULL;
+            return cpy;
+        }
+
+        // position existing in list range case
+        if(size + 2 > pos)
+        {
+            while(cpy->next != NULL && index < pos)
+            {
+                flag++;
+                index++;
+                cpy = cpy->next;
+            }
+
+            if(flag == pos)
+            {
+                // position into list with no poiting for NULL
+                if(cpy->next != NULL)
+                {
+                    cpy->prev->next = cpy->next;
+                    cpy->next->prev = cpy->prev;
+                }
+                
+                // last position case
+                else
+                {
+                    cpy->prev->next = NULL;
+                }
+            }
+        }
+        return list;
+    }
+}
+
+
+int search(List *list, double value)
+{
+    if(list == NULL)
+    {
+        return 0;
+    }
+    if(list->value == value)
+    {
+        return 1;
+    }
+
+    search(list->next, value);
+}
+
+
