@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/garrychen/Documents/c and cpp/learn-C-and-CPP/data_structures/C/stack.c
+stdio.h
+-
+stdlib.h
+-
+

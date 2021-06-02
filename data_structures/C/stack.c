@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// head is a sentinel node ???
+
 struct node
 {
     int data;
@@ -44,7 +44,7 @@ void push(int x)
         tmp->data = x;
         tmp->next = NULL;
         tmp->pre = head;
-        head->next = tmp;
+        // head->next = tmp;
         head = tmp;
     }
     ++count;
@@ -73,7 +73,7 @@ int pop()
     {
         returnData = head->data;
 
-        // because head is a sentinel node
+
         if(head->pre == NULL)
         {
             free(head);
@@ -125,4 +125,34 @@ int isEmpty()
     return 0;
 }
 
+int main(int argc, char const *argv[])
+{
+    int x, y, z;
 
+    create();
+    push(4);
+    x = pop();
+    // 4. Count: 0. Empty: 1.
+    printf("%d.\t\tCount: %d.\tEmpty: %d.\n", x, size(), isEmpty());
+
+    push(1);
+    push(2);
+    push(3);
+    x = pop();
+    y = pop();
+    // 3, 2. Count: 1. Empty: 0;
+    printf("%d, %d.\t\tCount: %d.\tEmpty: %d.\n", x, y, size(), isEmpty());
+    pop();  // Empty the stack.
+
+    push(5);
+    push(6);
+    x = peek();
+    push(7);
+    y = pop();
+    push(8);
+    z = pop();
+    // 6, 7, 8. Count: 2. Empty: 0.
+    printf("%d, %d, %d.\tCount: %d.\tEmpty: %d.\n", x, y, z, size(), isEmpty());
+
+    return 0;
+}
