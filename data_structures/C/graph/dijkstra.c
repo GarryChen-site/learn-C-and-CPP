@@ -51,6 +51,22 @@ int minDistance(int mdist[], int vset[], int V)
     return minInd;
 }
 
+// Utility function to print distances
+void print(int dist[], int V)
+{
+    printf("\nVertex Distance\n");
+    for(int i=0; i<V; i++)
+    {
+        if(dist[i] != INT_MAX)
+        {
+            printf("%d\t%d\n",i,dist[i]);
+        }else
+        {
+            printf("%d\tINF",i);
+        }
+    }
+}
+
 // The main function that finds the shortest path from given source
 // to all other vertices using Dijkstra's Algorithm. It doesn't work on negative weights
 void Dijkstra(struct Graph *graph, int src)
@@ -84,5 +100,34 @@ void Dijkstra(struct Graph *graph, int src)
         }
     }
 
+    print(mdist,V);
+
     return;
+}
+
+int main()
+{
+    int V,E, gsrc;
+    int src, dst, weight;
+    struct Graph G;
+    printf("Enter number of vertives: ");
+    scanf("%d", &V);
+    printf("Enter number of edges: ");
+    scanf("%d", &E);
+    createGraph(&G, V);
+    for(int i=0; i < E; i++)
+    {
+        printf("\nEdge %d \nEnter source: ", i + 1);
+        scanf("%d",&src);
+        printf("Enter destination: ");
+        scanf("%d", &dst);
+        printf("Enter weight: ");
+        scanf("%d", &weight);
+        addEdge(&G, src, dst, weight);
+    }
+    printf("\nEnter source: ");
+    scanf("%d", &gsrc);
+    Dijkstra(&G, gsrc);
+
+    return 0;
 }
