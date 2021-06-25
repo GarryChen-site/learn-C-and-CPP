@@ -17,5 +17,6 @@
         "functional": "c",
         "tuple": "c",
         "type_traits": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
