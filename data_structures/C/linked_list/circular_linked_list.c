@@ -10,8 +10,8 @@ struct node
 	struct node *next;
 };
 
-struct node *first=NULL;
-struct node *last=NULL;
+struct node *head=NULL;
+struct node *tail=NULL;
 
 void create()
 {
@@ -32,16 +32,16 @@ void create()
 		}
 		scanf("%d", &pnode->data);
 
-		if(first == NULL)
+		if(head == NULL)
 		{
-			first = last = pnode;
+			head = tail = pnode;
 		}else
 		{
-			last->next = pnode;
-			last = pnode; // last keeps tracks of last node
+			tail->next = pnode;
+			tail = pnode; // last keeps tracks of last node
 		}
 
-		last->next = first;
+		tail->next = head;
 	}
 }
 
@@ -51,9 +51,9 @@ void deletenode(int k)
 	struct node *p, *follow;
 
 	// searching the required node
-	p = first;
+	p = head;
 	follow = NULL;
-	while(follow != last)
+	while(follow != tail)
 	{
 		if(p->data == k)
 		break;
@@ -61,28 +61,28 @@ void deletenode(int k)
 		p = p->next;
 	}
 
-	if(follow == last)
+	if(follow == tail)
 	{
 		printf("Required node not found.\n");
 	}
 	else
 	{
 		// deleting the one and the only node
-		if(p == first && p==last)
+		if(p == head && p==tail)
 		{
-			first = last = NULL;
+			head = tail = NULL;
 		}
-		// deleting the last node
-		else if (p == first)
+		// deleting the tail node
+		else if (p == head)
 		{
-			first = first->next;
-			last->next = first;
+			head = first->next;
+			tail->next = head;
 		}
-		// deleting the last node
-		else if(p == last)
+		// deleting the tail node
+		else if(p == tail)
 		{
-			last = follow;
-			last->next = first;
+			tail = follow;
+			tail->next = head;
 		}
 		// deleting any other node
 		else
@@ -99,7 +99,7 @@ void traverse()
 {
 	struct node *p, *follow;
 
-	if(first == NULL)
+	if(head == NULL)
 	{
 		printf("Circulary Linked List Empty");
 	}
@@ -107,9 +107,9 @@ void traverse()
 	{
 		printf("Circularly Linked List is as shown: \n");
 
-		p = first;
+		p = head;
 		follow = NULL;
-		while(follow != last)
+		while(follow != tail)
 		{
 			printf("%d ", p->data);
 			follow = p;
