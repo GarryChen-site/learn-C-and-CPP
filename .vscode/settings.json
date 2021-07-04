@@ -16,7 +16,15 @@
         "streambuf": "c",
         "functional": "c",
         "tuple": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "memory_resource": "c",
+        "algorithm": "c",
+        "random": "c",
+        "initializer_list": "c",
+        "numeric": "c",
+        "cmath": "c",
+        "utility": "c",
+        "typeinfo": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

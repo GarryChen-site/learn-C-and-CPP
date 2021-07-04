@@ -6,7 +6,7 @@
 
 dynamic_array_t *init_dynamic_array()
 {
-	dynamic_array *da = malloc(sizeof(dynamic_array_t));
+	dynamic_array_t *da = malloc(sizeof(dynamic_array_t));
 	da->items = calloc(DEFAULT_CAPACITY, sizeof(void *));
 	da->capacity = DEFAULT_CAPACITY;
 
@@ -32,7 +32,7 @@ void *put(dynamic_array_t *da, const void *value, const unsigned index)
 {
 	if(!contains(da->size, index))
 	{
-		retuen INDEX_OUT_BOUNDS;
+		return INDEX_OUT_BOUNDS;
 	}
 
 	free(da->items[index]);
@@ -49,14 +49,14 @@ void *get(dynamic_array_t *da, const unsigned index)
 		return INDEX_OUT_BOUNDS;
 	}
 
-	retuen da->items[index];
+	return da->items[index];
 }
 
 void delete(dynamic_array_t *da, const unsigned index)
 {
 	if(!contains(da->size, index))
 	{
-		retuen;
+		return;
 	}
 	for(unsigned i = index; i< da->size; i++)
 	{
@@ -71,9 +71,10 @@ unsigned contains(const unsigned size, const unsigned index)
 {
 	if(size >=0 && index < size)
 	{
-		retuen 1;
+		return 1;
 	}
 	printf("index [%d] out of bounds!\n", index);
+	return 0;
 }
 
 void *retrive_copy_of_value(const void *value)
