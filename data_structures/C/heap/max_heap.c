@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 typedef struct max_heap
 {
@@ -53,6 +54,17 @@ int main()
     return 0;
 }
 
+/*
+*         7
+*      5     6
+*    4   2 1
+* 
+*   7 5 6 4 2 1 
+* 0 1 2 3 4 5 6
+* 
+* 数组中下标为i的节点的左子节点，就是下标为i*2的节点，
+* 右子节点就是下标为i*2+1的节点，父节点就是下标为i/2的节点
+*/
 Heap *create_heap(Heap *heap)
 {
     heap = (Heap *)malloc(sizeof(Heap));
@@ -61,6 +73,106 @@ Heap *create_heap(Heap *heap)
     heap->p = (int *)malloc(heap->size * sizeof(int));
     heap->count = 0;
     return heap;
+}
+
+void down_heapify(Heap *heap, int index)
+{
+    if(index >= heap->count)
+    {
+        return;
+    }
+    int left = index * 2 + 1;
+    int right = index * 2 + 2;
+    int leftflag = 0, rightflag = 0;
+
+    int maximum = *((heap->p) + index);
+    if(left < heap->count && maximum < *((heap->p) + left))
+    {
+        maximum = *((heap->p) + left);
+        leftflag = 1;
+    }
+    if(right < heap->count && maximum < *((heap->p) + right))
+    {
+        maximum = *((heap->p) + right);
+        leftflag = 0;
+        rightflag = 1;
+    }
+
+    if(leftflag)
+    {
+        *((heap->p) + left) = *((heap->p) + index);
+        *((heap->p) + index) = maximum;
+        down_heapify(heap, left);
+    }
+    if(rightflag)
+    {
+        *((heap->p) + right) = *((heap->p) + index);
+        *((heap->p) + index) = maximum;
+        down_heapify(heap, right);
+    }
+}
+
+void up_heapify(Heap *heap, int index)
+{
+    int parent = (index - 1) / 2;
+    if(parent < 0)
+    {
+        return;
+    }
+    if(*((heap->p) + index) > *((heap->p) + parent))
+    {
+        int temp = *((heap->p) + index);
+        *((heap->p) + index) = *((heap->p) + parent);
+        *((heap->p) + parent) = temp;
+        up_heapify(heap, parent);
+    }
+}
+
+void push(Heap *heap; int x)
+{
+    if(heap->count >= heap->size)
+    {
+        return;
+    }
+    *((heap->p) + heap->count) = x;
+    heap->count++;
+    if(4 * heap->count >= 3 * heap ->size)
+    {
+        heap->size *= 2;
+        (heap->p) = (int *)realloc((heap->p), (heap->size) * sizedof(int));
+    }
+
+    up_heapify(heap, heap->count - 1);
+}
+
+void pop(Heap *heap)
+{
+    if(heap->count == 0)
+    {
+        return;
+    }
+    heap->count--;
+    int temp = *((heap->p) + heap->count);
+    *((heap->p) + heap->count) = *(heap->p);
+    *(heap->p) = temp;
+    down_heapify(heap, 0);
+    if(4 * heap->count <= heap->size)
+    {
+        heap->size /= 2;
+        (heap->p) = (int *)realloc((heap->p), (heap->size) * sizeof(int));
+    }
+}
+
+int top(Heap *heap)
+{
+    if(heap->count != 0)
+    {
+        return *(heap->p);
+    }
+    else
+    {
+        return INT_MIN;
+    }
 }
 
 int seize(Heap *heap)
